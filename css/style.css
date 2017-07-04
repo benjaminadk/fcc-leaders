@@ -45,6 +45,9 @@
   font: 1.25rem "Fresca", Arial, sans-serif;
   margin: 10px 10px 0 100px;
 }
+#toggleButton:hover {
+  background: color('accent2');
+}
 
 #tableStatus {
   font: 2rem "Passion One", Arial, sans-serif;
