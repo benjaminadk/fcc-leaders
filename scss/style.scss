@@ -78,6 +78,10 @@ img:hover {
   margin: 10px 10px 0 100px;
 }
 
+#toggleButton:hover {
+  background: color('accent2');
+}
+
 #tableStatus {
   font: 2rem $primaryFont;
 }
