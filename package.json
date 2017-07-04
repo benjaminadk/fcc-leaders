@@ -28,7 +28,7 @@
   },
   "git": {
   "scripts": {
-    "pre-push": "surge --project ./fcc-leaders --domain fcc-leaders.surge.sh"
+    "pre-push": "surge --project /home/ubuntu/workspace/fcc-leaders/ --domain fcc-leaders.surge.sh"
   }
 }
 }
