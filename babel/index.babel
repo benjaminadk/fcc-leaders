@@ -1,0 +1,230 @@
+
+class TitleBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      camper: [],
+      searched: false
+    }
+    this.handleSearch = this.handleSearch.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
+  handleSearch() {
+    var input = $("#search").val();
+    if(input.length > 1){
+      
+  $.ajax({
+    
+    url: "https://fcctop100.herokuapp.com/api/fccusers/ranking-r/" + input,
+    cache: true,
+    dataType: "json",
+    success: function(data) {
+       this.setState({
+         camper: data,
+         searched: true
+       }); 
+    }.bind(this),
+    error: function(xhr,type,errMsg) {
+        alert("ERROR: " + "https://fcctop100.herokuapp.com/api/fccusers/ranking-r/benjaminadk", type, errMsg);
+      }.bind(this)
+  });
+    }
+    
+  }
+  closeModal() {
+    this.setState({
+      searched: false
+    });
+  }
+  render () {
+    if(this.state.searched) {
+      $("#info").css({
+        "opacity": 1,
+        "z-index": 2
+      });
+    $("#overlay").css({
+      "opacity": 1,
+      "z-index": 1});
+    }
+    else{
+      $("#info").css({
+        "opacity": 0,
+        "z-index": -2
+      });
+    $("#overlay").css({
+      "opacity": 0,
+      "z-index": -2});
+    }
+    return (
+    
+    <div className='row' id="titleBar">
+        
+    
+          <div id="info" className="card">
+          <h1>Hey {this.state.camper.username}!</h1>
+          <h2>Lets check out your stats</h2>
+          <table className="hover">
+            <thead>
+              <th id="picLabel">Profile Pic</th>
+              <th>Ranking</th>
+              <th>Points</th>
+              <th>Challenges</th>
+              <th>Algorithms</th>
+              <th>Projects</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td><img src={this.state.camper.img}/></td>
+                <td className="dataItem">{this.state.camper.ranking}</td>
+                <td className="dataItem">{this.state.camper.points}</td>
+                <td className="dataItem">{this.state.camper.challenges}</td>
+                <td className="dataItem">{this.state.camper.algorithms}</td>
+                <td className="dataItem">{this.state.camper.projects}</td>
+              </tr>
+            </tbody>
+            </table>
+            <a href="#" className="button closeButton" onClick={this.closeModal}>PRESS TO CLOSE MODAL</a>
+        </div>
+      
+        
+    <div className='column small-7' >
+    <span id="title"><i className="fa fa-free-code-camp"></i>Free Code Camp Leaderboard: Brownie Point Munchers
+                     <i className="fa fa-free-code-camp"></i></span>
+      <br/>
+      <a href="#" className="button" id="toggleButton" onClick={this.props.method}>TOGGLE TABLE</a>
+      <span id="tableStatus">Table is currently in <span id="currentStatus">{this.props.status}</span> mode</span>
+    </div>
+    <div className="column small-5 search">
+      <a href="#" className="button split no-pip" onClick={this.handleSearch}>SEARCH<span><i className="fa fa-search"></i><input id='search' type='search' placeholder='ENTER YOUR USERNAME' /></span></a>
+    </div>
+    </div>  
+    );
+  }
+}
+
+
+
+const TableHead = (props) => (
+  <thead>
+          <tr>
+            <th className="headSpace" id="rank">Top 💯</th>
+            <th className="headSpace" id="userName">User Name</th>
+            <th className="headSpace" id="recent">Recent Points 🐊</th>
+            <th className="headSpace" id="allTime">All Time Points 🐐</th>
+          </tr>
+        </thead>
+);
+
+const TableFoot = (props) => (
+<tfoot>
+ <tr>
+   <td className="foot"></td>
+    <td className="foot">Page Design by Ben.Jam(In);</td>
+   <td className="foot"></td>
+   <td className="foot"></td>
+  </tr>
+  </tfoot>
+);
+
+class User extends React.Component {
+  render(){
+    return(
+  <tr>
+      <td id="userRank">{this.props.rank}</td>
+        <td id="userUser"><img src={this.props.data.img}/>
+        <a href={"https://www.freecodecamp.com/" + this.props.data.username} target="_blank">{this.props.data.username}</a></td>
+      <td id="userRecent">{this.props.data.recent}</td>
+      <td id="userAllTime">{this.props.data.alltime}</td>
+  </tr>
+      );
+  }
+}
+
+class Table extends React.Component {
+  render(){
+    var rank = 0;
+    var allUsers = this.props.users.map(function(user){
+      rank++;
+      return (
+        <User rank={rank} data={user}/>
+             );
+          }.bind(this));
+    return(
+    <table>
+        <TableHead/>
+        <tbody>
+          {allUsers}
+        </tbody>
+        <TableFoot/>
+        </table>
+    );
+  }
+}
+
+class Body extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [],
+      sort: "recent",
+    }
+    this.getCampers = this.getCampers.bind(this);
+    this.toggleTable = this.toggleTable.bind(this);
+  }
+  getCampers() {
+    $.ajax({
+      url: this.props.url + "top/" + this.state.sort,
+      cache: false,
+      dateType: "json",
+      success: function(data) {
+        this.setState({users: data});
+      }.bind(this),
+      error: function(xhr,type,errMsg) {
+        alert("ERROR: " + this.props.url, type, errMsg);
+      }.bind(this)
+    });
+  }
+toggleTable () {
+  if(this.state.sort === "recent"){
+  this.setState({
+    sort: "alltime"
+  });
+  setTimeout(this.getCampers,1000);
+  }
+  else{
+    this.setState({
+      sort: "recent"
+    });
+  setTimeout(this.getCampers,1000);
+  }
+}
+  componentDidMount () {
+    this.getCampers();
+  }
+  render() {
+    return(
+      <div id="outerWrap">
+      <TitleBar method={this.toggleTable}
+                status={this.state.sort}/>
+    <Table users={this.state.users}/>
+        </div>
+    );
+  }
+}
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return(
+      
+      <Body url={this.props.url}/>
+    );
+  }
+}
+
+ReactDOM.render(<App url="https://fcctop100.herokuapp.com/api/fccusers/"/>,
+document.getElementById("app"));
+
+  

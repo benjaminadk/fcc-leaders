@@ -1,0 +1,191 @@
+#outerWrap table img {
+  height: 75px;
+  width: 75px;
+  border-radius: 20px;
+  border: 2px outset #b7b7b7;
+  margin-right: 15px;
+  transition: all .25s linear;
+}
+#outerWrap table img:hover {
+  transform: scale(1.2);
+  border: 4px outset #006400;
+}
+#outerWrap table a, #outerWrap table a:visited {
+  color: #FFFFFF;
+  background: #3f2d0f;
+  padding: 5px 15px 5px 15px;
+  border-radius: 20px;
+  font: 2rem "Passion One", Arial, sans-serif;
+}
+#outerWrap table a:active, #outerWrap table a:hover {
+  color: #EDC795;
+}
+
+#titleBar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #006400;
+  color: #FFFFFF;
+  width: 100%;
+  padding: 10px;
+  border-left: 20px solid #62A561;
+}
+#titleBar #title {
+  font: 2.2rem "Passion One", Arial, sans-serif;
+}
+#titleBar #title .fa {
+  margin: 0 10px;
+}
+
+#toggleButton {
+  background: #3f2d0f;
+  border: 3px outset #EDC795;
+  border-radius: 10px;
+  font: 1.25rem "Fresca", Arial, sans-serif;
+  margin: 10px 10px 0 100px;
+}
+
+#tableStatus {
+  font: 2rem "Passion One", Arial, sans-serif;
+}
+
+#currentStatus {
+  font-size: 2.2rem;
+  background: #62A561;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.search {
+  font-family: "Fresca", Arial, sans-serif;
+}
+.search a, .search a:visited {
+  font-size: 2rem;
+  background: #3f2d0f;
+  color: FFFFFF;
+  border-radius: 10px;
+  border: 5px outset #EDC795;
+}
+.search a .fa, .search a:visited .fa {
+  margin-left: 5px;
+}
+.search a:active, .search a:hover {
+  color: #EDC795;
+}
+.search #search {
+  outline: transparent;
+}
+
+.headSpace {
+  font: 2rem "Passion One", Arial, sans-serif;
+  background: #3f2d0f;
+  color: #FFFFFF;
+  border-left: 4px solid #EDC795;
+  border-top: 4px solid #3f2d0f;
+  text-align: center;
+}
+
+#rank {
+  width: 15vw;
+  border-left: 20px solid #EDC795;
+}
+
+#userName {
+  width: 35vw;
+}
+
+#recent {
+  width: 25vw;
+}
+
+#allTime {
+  width: 25vw;
+}
+
+#userRank {
+  font: 3em "Passion One", Arial, sans-serif;
+  text-align: center;
+}
+
+#userUser {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#userRecent {
+  font: 2.5rem "Passion One", Arial, sans-serif;
+  text-align: center;
+}
+
+#userAllTime {
+  font: 2.5rem "Passion One", Arial, sans-serif;
+  text-align: center;
+}
+
+.foot {
+  font: 2rem "Fresca", Arial, sans-serif;
+  background: #006400;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+#info {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  width: 75vw;
+  background: #FFFFFF;
+  text-align: center;
+  font-family: "Fresca", Arial, sans-serif;
+  border: 1px solid;
+  box-shadow: 5px 5px 5px #000000;
+  opacity: 0;
+  z-index: -1;
+}
+#info h1, #info h2 {
+  font: 3rem "Passion One", Arial, sans-serif;
+  background: #006400;
+  color: #FFFFFF;
+  margin: 0;
+  border-bottom: 5px solid #006400;
+}
+
+#info thead th {
+  background-color: #3f2d0f;
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  padding-left: 15px;
+  border: 3px solid #3f2d0f;
+}
+
+.dataItem {
+  font: 2.5rem "Fresca", Arial, sans-serif;
+  padding-right: 50px;
+}
+
+#picLabel {
+  padding-left: 80px;
+}
+
+.closeButton {
+  background: #006400;
+}
+
+.closeButton:hover {
+  background: #EDC795 !important;
+  color: #000000 !important;
+}
+
+#overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  opacity: 0;
+  background: rgba(255, 255, 255, 0.5);
+}

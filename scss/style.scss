@@ -1,0 +1,369 @@
+//EXPLORING SASS
+
+//FCC CAMO COLOR PALETTE
+$colors: (
+  'primary': #006400,
+  'accent': #62A561,
+  'secondary': #3f2d0f,
+  'accent2': #EDC795,
+  'neutral': #b7b7b7
+);
+
+//MAPPING PALETTE TO COLOR()
+@function color($key: 'color') {
+  @return map-get($colors, $key);
+}
+//FONTS
+$primaryFont: 'Passion One', Arial, sans-serif;
+$secondaryFont: 'Fresca', Arial, sans-serif;
+
+//NESTING LINK PSEUDO CLASSES - USE #{$} 
+$a-tags: 'a, a:visited';
+$a-tags-hover: 'a:active, a:hover';
+
+//STYLES WITHIN TABLE
+#outerWrap table{
+//AVATARS
+img {
+  height: 75px;
+  width: 75px;
+  border-radius: 20px;
+  border: 2px outset color('neutral');
+  margin-right: 15px;
+  transition: all .25s linear;
+}
+
+img:hover {
+  transform: scale(1.2);
+  border: 4px outset color('primary');
+}
+  
+//USERNAME LINKS TO THEIR HOMEPAGE
+#{$a-tags} {
+  color: #FFFFFF;
+  background: color("secondary");
+  padding: 5px 15px 5px 15px;
+  border-radius: 20px;
+  font: 2rem $primaryFont;
+}
+
+#{$a-tags-hover} {
+  color: color('accent2');
+}
+}
+
+//TABLE TITLE BAR
+#titleBar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: color('primary');
+  color: #FFFFFF;
+  width: 100%;
+  padding: 10px;
+  border-left: 20px solid color('accent');
+  #title {
+    font: 2.2rem $primaryFont;
+    .fa {
+      margin: 0 10px;
+    }
+  }
+}
+
+#toggleButton {
+  background: color('secondary');
+  border: 3px outset color('accent2');
+  border-radius: 10px;
+  font: 1.25rem $secondaryFont;
+  margin: 10px 10px 0 100px;
+}
+
+#tableStatus {
+  font: 2rem $primaryFont;
+}
+
+#currentStatus {
+  font-size: 2.2rem;
+  background: color('accent');
+  border-radius: 10px;
+  padding: 5px;
+}
+
+//SEARCH BOX BUTTON
+.search {
+  font-family: $secondaryFont;
+  #{$a-tags} {
+    font-size: 2rem;
+    background: color('secondary');
+    color: FFFFFF;
+    border-radius: 10px;
+    border: 5px outset color('accent2');
+    .fa {
+      margin-left: 5px;
+    }
+  }
+  #{$a-tags-hover} {
+    color: color('accent2');
+  }
+  #search {
+    outline: transparent;
+    }
+  }
+
+//TABLE HEADER ROW
+.headSpace {
+  font: 2rem $primaryFont;
+  background: color('secondary');
+  color: #FFFFFF;
+  border-left: 4px solid color('accent2');
+  border-top: 4px solid color('secondary');
+  text-align: center;
+}
+
+#rank {
+  width:15vw;
+  border-left: 20px solid color('accent2');
+}
+
+#userName {
+  width: 35vw;
+}
+
+#recent {
+  width: 25vw;
+}
+
+#allTime {
+  width: 25vw;
+}
+
+//TABLE USER DATA
+#userRank {
+  font: 3em $primaryFont;
+  text-align: center;
+}
+
+#userUser {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#userRecent {
+  font: 2.5rem $primaryFont;
+  text-align: center;
+}
+
+#userAllTime {
+  font: 2.5rem $primaryFont;
+  text-align: center;
+}
+
+//FOOTER
+.foot {
+  font: 2rem $secondaryFont;
+  background: color('primary');
+  color: #FFFFFF;
+  text-align: center;
+}
+
+//INFO WINDOW
+#info {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  width: 75vw;
+  background: #FFFFFF;
+  text-align: center;
+  font-family: $secondaryFont;
+  border: 1px solid;
+  box-shadow: 5px 5px 5px #000000;
+  opacity:0;
+  z-index: -1;
+  h1,h2 {
+    font: 3rem $primaryFont;
+    background: color('primary');
+    color: #FFFFFF;
+    margin:0;
+    border-bottom: 5px solid color('primary');
+  }
+}
+
+#info thead th {
+    background-color: color('secondary');
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    padding-left: 15px;
+    border: 3px solid color('secondary');
+  }
+
+.dataItem {
+  font: 2.5rem $secondaryFont;
+  padding-right: 50px;
+}   
+
+#picLabel {
+  padding-left: 80px
+}
+
+.closeButton {
+  background: color('primary');
+}
+.closeButton:hover {
+    background: color('accent2')!important;
+    color: #000000!important;
+  }
+
+//OVERLAY
+#overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  opacity: 0;
+  background: rgba(255,255,255,.5);
+}
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
